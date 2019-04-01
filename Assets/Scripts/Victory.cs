@@ -11,7 +11,12 @@ public class Victory : MonoBehaviour {
 
     private void Update()
     {
-            
+        timerText.text = "Temps :"+Mathf.FloorToInt(time - Time.time)/60+" : "+ Mathf.FloorToInt(time - Time.time) % 60;
+        if (Time.time > time)
+        {
+            text.text = "Vous avez perdu!";
+            Time.timeScale = 0;
+        }
     }
 
     void OnTriggerEnter(Collider other)
