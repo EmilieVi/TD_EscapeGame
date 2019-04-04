@@ -20,6 +20,7 @@ public class InteractionBehaviour : MonoBehaviour {
 	void Start () {
 		
 	}
+    //l'objet".GetComponent<Collider>().enabled = false;
 	
 	// Update is called once per frame
 	void Update () {
@@ -27,6 +28,7 @@ public class InteractionBehaviour : MonoBehaviour {
         {
             grabbed.transform.parent = null;
             grabbed.transform.GetComponent<Rigidbody>().isKinematic = false;
+            grabbed.transform.GetComponent<Collider>().enabled = true;
             grabbed = null;
         }
         if (Input.GetButtonDown("Fire1"))//Clic gauche
@@ -43,6 +45,7 @@ public class InteractionBehaviour : MonoBehaviour {
                     grabbed.transform.position = hTrans.position + (Vector3.up * 0.1f);
                     grabbed.transform.rotation = Quaternion.identity;
                     grabbed.transform.GetComponent<Rigidbody>().isKinematic = true;
+                    grabbed.transform.GetComponent<Collider>().enabled = true;
                     grabbed = null;
                 }
             }
@@ -87,6 +90,7 @@ public class InteractionBehaviour : MonoBehaviour {
                         hTrans.localPosition = Vector3.zero;
                         hTrans.localRotation = Quaternion.identity;
                         hTrans.GetComponent<Rigidbody>().isKinematic = true;
+                        hTrans.GetComponent<Collider>().enabled = false;
                         if (hTrans.GetComponent<Objet>().socle != null)
                         {
                             hTrans.GetComponent<Objet>().socle.objet = null;
